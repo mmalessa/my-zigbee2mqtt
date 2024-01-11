@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+    app:
+        image: koenkk/zigbee2mqtt
+        container_name: ${COMPOSE_PROJECT_NAME}-app
+        restart: always
+        ports: 
+            - 8080:8080
+        devices:
+            - /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyZigbee
+        volumes:
+            - ./data:/app/data
+            - /run/udev:/run/udev:ro
+        environment:
+            TZ: Europe/Warsaw
+        group_add:
+            - dialout
+        user: 1000:1000
+

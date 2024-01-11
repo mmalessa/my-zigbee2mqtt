@@ -1,0 +1,3 @@
+/data/*
+!/data/configuration.yaml.dist
+
